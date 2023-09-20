@@ -1,0 +1,18 @@
+@import "_fonts.scss";
+@import "_media.scss";
+@import "_normalize.scss";
+
+.square {
+  margin: 100px auto 0;
+
+  width: 100px;
+  height: 100px;
+  background-color: #e71818;
+}
+.block {
+  margin-top: 100px;
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  border-radius: 50%;
+}
