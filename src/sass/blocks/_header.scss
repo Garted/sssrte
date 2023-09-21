@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__text_first {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  &__text_second {
+    margin-top: 7px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  &__link {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+  &__button {
+    margin-top: 3px;
+  }
+}

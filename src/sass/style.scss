@@ -1,55 +1,14 @@
-@import "_media.scss";
-@import "_normalize.scss";
-@import "_fonts.scss";
+@import "work/_fonts.scss";
+@import "work/_normalize.scss";
+@import "work/_media.scss";
+
+@import "variables/mixins.scss";
+@import "blocks/_header.scss";
+@import "blocks/_main.scss";
+@import "blocks/buttons.scss";
+@import "blocks/advantage.scss";
 
 .container {
   max-width: 950px;
   margin: 0 auto;
-}
-.main {
-  min-height: 650px;
-  background: url(../img/firstbg.png) center center / cover no-repeat;
-  .header {
-    padding-top: 21px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__text_first {
-      color: #fff;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 12px;
-    }
-    &__text_second {
-      color: #fff;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-    }
-    &__link {
-      color: #fff;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 18px;
-    }
-    &__button {
-      button {
-        width: 153px;
-        height: 32px;
-        background-color: #e10c0c;
-        border-radius: 10%;
-        color: #fff;
-        text-align: center;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        text-transform: uppercase;
-      }
-    }
-  }
 }
