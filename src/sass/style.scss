@@ -1,6 +1,5 @@
 @import "work/_fonts.scss";
 @import "work/_normalize.scss";
-@import "work/_media.scss";
 
 @import "variables/_mixins.scss";
 @import "blocks/_header.scss";
@@ -9,8 +8,10 @@
 @import "blocks/_advantage.scss";
 @import "blocks/_consultation.scss";
 @import "blocks/_form.scss";
+@import "blocks/slider.scss";
 
 .container {
   max-width: 950px;
   margin: 0 auto;
 }
+@import "work/_media.scss";
