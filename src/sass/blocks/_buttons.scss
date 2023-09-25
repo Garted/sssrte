@@ -11,6 +11,9 @@
   line-height: normal;
   text-transform: uppercase;
 }
+.button:hover {
+  border: 1px solid black;
+}
 
 .big_button {
   width: 300px;
@@ -22,4 +25,10 @@
   height: 58px;
   background-color: $main-color;
   font-size: 16px;
+}
+.catalog__button {
+  width: 135px;
+  height: 44px;
+  font-size: 14px;
+  font-weight: 500;
 }
