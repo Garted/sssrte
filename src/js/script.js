@@ -25,3 +25,41 @@ prevBtn.addEventListener("click", () => {
 });
 // Показываем первый слайд при загрузке страницы
 showSlide(currentSlide);
+
+// Получаем все элементы с классом .item
+const items = document.querySelectorAll(".catalog__elem");
+
+// Добавляем обработчик события click к каждому элементу
+items.forEach((item) => {
+  item.addEventListener("click", () => {
+    items.forEach((otherItem) => {
+      otherItem.classList.remove("catalog__elem_active");
+    });
+    item.classList.add("catalog__elem_active");
+  });
+});
+
+const cards = document.querySelectorAll(".catalog__item");
+
+cards.forEach((card) => {
+  card.addEventListener("click", function () {
+    this.classList.toggle("flipped");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const showFitnessItems = document.querySelectorAll(".show-fitness");
+  const cards = document.querySelectorAll(".fitness");
+
+  showFitnessItems.forEach(function (item) {
+    item.addEventListener("click", function () {
+      cards.forEach(function (card) {
+        if (card.classList.contains("fitness")) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+});
