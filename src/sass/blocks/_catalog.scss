@@ -97,14 +97,13 @@
   }
   &__more {
     margin-top: 11px;
-    a {
-      color: #c70101;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 14px;
-      text-transform: uppercase;
-      text-decoration-line: underline;
-    }
+    color: #c70101;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    text-transform: uppercase;
+    text-decoration-line: underline;
+    cursor: pointer;
   }
   &__divider {
     width: 263px;

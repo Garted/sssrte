@@ -2,17 +2,22 @@
 
 //СКРИПТ НА СЛАЙДЕР//
 
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const slides = document.querySelectorAll(".slider__slide");
-let currentSlide = 0;
-// Функция для отображения текущего слайда
+//определяем на какие элементы мы будем взаимодействовать
+const prevBtn = document.getElementById("prevBtn"); //кнопка
+const nextBtn = document.getElementById("nextBtn"); //кнопка
+const slides = document.querySelectorAll(".slider__slide"); //блок с картинкой
+let currentSlide = 0; // Функция для отображения текущего слайда
+
 function showSlide(index) {
+  //создаем функцию с аргументом index
   slides.forEach((slide, i) => {
+    //метод для каждого элемента с классом slider__slide
     if (i === index) {
-      slide.classList.add("slider__active");
+      //условие если там есть элемент с классом slider__slide
+      slide.classList.add("slider__active"); //добавляем ему еще один класс
     } else {
-      slide.classList.remove("slider__active");
+      //если нет
+      slide.classList.remove("slider__active"); //убираем класс
     }
   });
 }
@@ -31,6 +36,7 @@ showSlide(currentSlide);
 
 //СКРИПТ НА СЛАЙДЕР ОКОНЧАНИЕ//
 
+//СКРИПТ НА СМЕНУ КЛАССА ТАБОВ//
 const items = document.querySelectorAll(".catalog__elem");
 // Добавляем обработчик события click к каждому элементу
 items.forEach((item) => {
@@ -41,15 +47,22 @@ items.forEach((item) => {
     item.classList.add("catalog__elem_active");
   });
 });
+
+// КОНЕЦ СКРИПТА НА СМЕНУ КЛАССА ТАБОВ//
+
+//СКРИПТ НА ПОВОРОТ КАРТОЧЕК//
 const cards = document.querySelectorAll(".catalog__item");
+
 cards.forEach((card) => {
   card.addEventListener("click", function () {
     this.classList.toggle("flipped");
   });
 });
 
-const wrap = document.querySelector(".catalog__wrap");
+//КОНЕЦ СКРИПТА НА ПОВОРОТ КАРТОЧЕК//
 
+//СКРИПТ НА НАЖАТИЕ ТАБА И ОТОБРАЖЕНИЕ ОПРЕДЕЛЕННЫХ КАРТОЧЕК//
+const wrap = document.querySelector(".catalog__wrap");
 document.addEventListener("DOMContentLoaded", function () {
   const showFitnessItems = document.querySelectorAll(
     ".catalog__elem.show-fitness"
@@ -59,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
       cards.forEach(function (card) {
         if (card.classList.contains("fitness")) {
           card.style.display = "block";
-          wrap.style.justifyContent = "flex-start";
         } else {
           card.style.display = "none";
         }
@@ -77,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
       cards.forEach(function (card) {
         if (card.classList.contains("running")) {
           card.style.display = "block";
-          wrap.style.justifyContent = "flex-start";
         } else {
           card.style.display = "none";
         }
@@ -95,11 +106,69 @@ document.addEventListener("DOMContentLoaded", function () {
       cards.forEach(function (card) {
         if (card.classList.contains("triatlon")) {
           card.style.display = "block";
-          wrap.style.justifyContent = "flex-start";
         } else {
           card.style.display = "none";
         }
       });
     });
   });
+});
+// ОКОНЧАНИЕ СКРИПТА НА НАЖАТИЕ ТАБА И ОТОБРАЖЕНИЕ ОПРЕДЕЛЕННЫХ КАРТОЧЕК//
+
+const overlay = document.querySelector(".overlay");
+const orderCall = document.querySelectorAll(".order");
+const croses = document.querySelectorAll(".modal__cross");
+const modals = document.querySelectorAll(".modal");
+const buyButton = document.querySelectorAll(".puls");
+
+function openModal() {
+  overlay.style.display = "block";
+}
+function closeModal() {
+  overlay.style.display = "none";
+}
+
+function showOrder() {
+  modals.forEach(function (modal) {
+    if (modal.classList.contains("order")) {
+      modal.style.display = "block";
+    } else {
+      modal.style.display = "none";
+    }
+  });
+}
+
+function showBuy() {
+  modals.forEach(function (modal) {
+    if (modal.classList.contains("buy")) {
+      modal.style.display = "block";
+    } else {
+      modal.style.display = "none";
+    }
+  });
+}
+
+orderCall.forEach(function (order) {
+  order.addEventListener("click", function () {
+    openModal();
+    showOrder();
+  });
+});
+
+buyButton.forEach(function (order) {
+  order.addEventListener("click", function () {
+    openModal();
+    showBuy();
+  });
+});
+
+croses.forEach(function (cross) {
+  cross.addEventListener("click", function () {
+    closeModal();
+  });
+});
+window.addEventListener("click", function (event) {
+  if (event.target == overlay) {
+    closeModal();
+  }
 });
