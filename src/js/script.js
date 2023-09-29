@@ -50,19 +50,9 @@ items.forEach((item) => {
 
 // КОНЕЦ СКРИПТА НА СМЕНУ КЛАССА ТАБОВ//
 
-//СКРИПТ НА ПОВОРОТ КАРТОЧЕК//
-const cards = document.querySelectorAll(".catalog__item");
-
-cards.forEach((card) => {
-  card.addEventListener("click", function () {
-    this.classList.toggle("flipped");
-  });
-});
-
-//КОНЕЦ СКРИПТА НА ПОВОРОТ КАРТОЧЕК//
-
 //СКРИПТ НА НАЖАТИЕ ТАБА И ОТОБРАЖЕНИЕ ОПРЕДЕЛЕННЫХ КАРТОЧЕК//
 const wrap = document.querySelector(".catalog__wrap");
+const cards = document.querySelectorAll(".catalog__item");
 document.addEventListener("DOMContentLoaded", function () {
   const showFitnessItems = document.querySelectorAll(
     ".catalog__elem.show-fitness"
@@ -115,11 +105,28 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // ОКОНЧАНИЕ СКРИПТА НА НАЖАТИЕ ТАБА И ОТОБРАЖЕНИЕ ОПРЕДЕЛЕННЫХ КАРТОЧЕК//
 
+//СКРИПТ НА ПОВОРОТ КАРТОЧЕК//
+
+const moreButtons = document.querySelectorAll(".catalog__more");
+moreButtons.forEach((button) => {
+  button.addEventListener("click", function (event) {
+    event.stopPropagation(); // Предотвращаем всплытие события клика на карточку
+    const card = this.closest(".catalog__item"); // Находим ближайшую карточку, содержащую кнопку
+    card.classList.toggle("flipped");
+  });
+  // Добавляем обработчик клика на всю карточку, чтобы он не вызывал переворот при клике на другие элементы внутри карточки
+  button.closest(".catalog__item").addEventListener("click", function (event) {
+    event.stopPropagation(); // Предотвращаем всплытие события клика на карточку
+  });
+});
+
+//КОНЕЦ СКРИПТА НА ПОВОРОТ КАРТОЧЕК//
+
 const overlay = document.querySelector(".overlay");
-const orderCall = document.querySelectorAll(".order");
+const orderCall = document.querySelectorAll(".orderbtn");
 const croses = document.querySelectorAll(".modal__cross");
 const modals = document.querySelectorAll(".modal");
-const buyButton = document.querySelectorAll(".puls");
+const buyButton = document.querySelectorAll(".catalog__button");
 
 function openModal() {
   overlay.style.display = "block";
@@ -148,17 +155,17 @@ function showBuy() {
   });
 }
 
+buyButton.forEach(function (buy) {
+  buy.addEventListener("click", function () {
+    openModal();
+    showBuy();
+  });
+});
+
 orderCall.forEach(function (order) {
   order.addEventListener("click", function () {
     openModal();
     showOrder();
-  });
-});
-
-buyButton.forEach(function (order) {
-  order.addEventListener("click", function () {
-    openModal();
-    showBuy();
   });
 });
 
@@ -167,6 +174,7 @@ croses.forEach(function (cross) {
     closeModal();
   });
 });
+
 window.addEventListener("click", function (event) {
   if (event.target == overlay) {
     closeModal();

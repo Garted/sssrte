@@ -17,6 +17,10 @@
     flex-direction: column;
     row-gap: 60px;
   }
+  &__anime {
+    animation-name: backInUp;
+    animation-duration: 0.5s;
+  }
   &__item {
     display: flex;
     column-gap: 60px;
